@@ -1,12 +1,12 @@
-export interface AppRenderProps {
-  pageProps: object
-  err?: Error
-  Component: NextComponentType<NextPageContext, AppRenderProps, object>
-  router: NextRouter
-}
-import type { NextComponentType, NextPageContext } from "next"
-import type { NextRouter } from "next/router"
+import { AppProps } from 'next/app';
+import { ChakraProvider } from '@chakra-ui/react';
 
-export default function App({ Component, pageProps }: AppRenderProps) {
-  return <Component {...pageProps} />
-}
+const App = ({ Component, pageProps }: AppProps) => {
+  return (
+    <ChakraProvider>
+      <Component {...pageProps} />
+    </ChakraProvider>
+  );
+};
+
+export default App;
